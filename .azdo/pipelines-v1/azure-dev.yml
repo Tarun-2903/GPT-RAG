@@ -8,9 +8,9 @@ pool:
 
 # edit these to match the names of your environments
 variables:
-  dev_env: dev
-  test_env: test
-  prod_env: prod
+  dev_env: <dev_env_name>
+  test_env: <test_env_name>
+  prod_env: <prod_env_name>
 
 stages:
   - stage: "DeployDev"

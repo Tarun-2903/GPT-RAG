@@ -411,7 +411,7 @@ var _storageAccountName = _azureReuseConfig.storageReuse ? _azureReuseConfig.exi
 
 @description('Key Vault Name. Use your own name convention or leave as it is to generate a random name.')
 param keyVaultName string = ''
-var _keyVaultName = _azureReuseConfig.keyVaultReuse ? _azureReuseConfig.existingKeyVaultName : !empty(keyVaultName) ? keyVaultName : 'kv0-${resourceToken}-2'
+var _keyVaultName = _azureReuseConfig.keyVaultReuse ? _azureReuseConfig.existingKeyVaultName : !empty(keyVaultName) ? keyVaultName : 'kv0-${resourceToken}'
 
 @description('OpenAI Service Name. Use your own name convention or leave as it is to generate a random name.')
 param openAiServiceName string = ''
@@ -731,7 +731,7 @@ module appServicePlan './core/host/appserviceplan.bicep' =  {
   scope: resourceGroup
   params: {
     name: _appServicePlanName
-    location: 'eastus'//location
+    location: location
     appServicePlanReuse : _azureReuseConfig.appServicePlanReuse
     existingAppServicePlanResourceGroupName : _azureReuseConfig.existingAppServicePlanResourceGroupName
     tags: tags
@@ -767,7 +767,7 @@ module orchestrator './core/host/functions.bicep' = {
     storageAccountName: '${_storageAccountName}orc'
     appServicePlanId: appServicePlan.outputs.id
     appName: _orchestratorFunctionAppName
-    location: 'eastus'//location
+    location: location
     functionAppReuse: _azureReuseConfig.orchestratorFunctionAppReuse
     existingFunctionAppResourceGroupName: _azureReuseConfig.existingOrchestratorFunctionAppResourceGroupName
     functionAppStorageReuse: _azureReuseConfig.orchestratorFunctionAppStorageReuse
@@ -976,7 +976,7 @@ module frontEnd  'core/host/appservice.bicep'  = {
     vnetName: _networkIsolation?vnet.outputs.name:''
     subnetId: _networkIsolation?vnet.outputs.appIntSubId:''
     appCommandLine: 'python ./app.py'
-    location: 'eastus'//location
+    location: location
     tags: union(tags, { 'azd-service-name': 'frontend' })
     appServicePlanId: appServicePlan.outputs.id
     runtimeName: 'python'
@@ -1082,7 +1082,7 @@ module dataIngestion './core/host/functions.bicep' = {
     subnetId: _networkIsolation?vnet.outputs.appIntSubId:''
     storageAccountName: '${_storageAccountName}ing'
     appName: _dataIngestionFunctionAppName
-    location: 'eastus' //location
+    location: location
     functionAppReuse: _azureReuseConfig.dataIngestionFunctionAppReuse
     existingFunctionAppResourceGroupName: _azureReuseConfig.existingDataIngestionFunctionAppResourceGroupName
     functionAppStorageReuse: _azureReuseConfig.dataIngestionFunctionAppStorageReuse
