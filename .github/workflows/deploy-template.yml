@@ -52,3 +52,5 @@ jobs:
           AZURE_ENV_NAME: ${{ inputs.AZURE_ENV_NAME }}
           AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
           AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+          ## [Darani Sai G@12-08-2024] Deleted all other code like Packaging and Deployment steps for infra deployment as per requirement

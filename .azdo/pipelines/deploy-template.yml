@@ -41,3 +41,5 @@ steps:
       AZURE_ENV_NAME: ${{ parameters.azureEnvName }}
       AZURE_LOCATION: $(AZURE_LOCATION)
       AZURE_SERVICE_CONNECTION: ${{ parameters.serviceConnection }}
+
+## [Darani Sai G@12-08-2024] Deleted all other code like Packaging and Deployment steps for infra deployment as per requirement

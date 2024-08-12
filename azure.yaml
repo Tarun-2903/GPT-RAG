@@ -4,6 +4,9 @@ name: azure-gpt-rag
 metadata:
   template: azure-gpt-rag
 services:
+
+  ## [Darani Sai G@12-08-2024] Commented out all other modules like frontend, Ingestion and orchestrator code for infra deployment as per requirement
+
   # dataIngest:
   #   # project is temporally pulled fro its repo during deployment.
   #   project: ./.azure/gpt-rag-ingestion
@@ -51,6 +54,9 @@ services:
   #         interactive: false
   #         continueOnError: false
 hooks:
+  
+  ## [Darani Sai G@12-08-2024] Commented out fetchComponents scripts to run for infra deployment as per requirement
+
   # Components are pulled from their own repo for deployment but are not persisted to this repo.
   # prepackage:
   #   posix:
