@@ -19,18 +19,18 @@ jobs:
     uses: ./.github/workflows/deploy-template.yml
     secrets: inherit
     with:
-      AZURE_ENV_NAME: dev # edit this to match your environment name
+      AZURE_ENV_NAME: cmf-dev # edit this to match your environment name
 
   deploy-test:
     uses: ./.github/workflows/deploy-template.yml
     secrets: inherit
     needs: [deploy-dev]
     with:
-      AZURE_ENV_NAME: test # edit this to match your environment name
+      AZURE_ENV_NAME: cmf-test # edit this to match your environment name
 
   deploy-prod:
     uses: ./.github/workflows/deploy-template.yml
     secrets: inherit
     needs: [deploy-test]
     with:
-      AZURE_ENV_NAME: prod # edit this to match your environment name
+      AZURE_ENV_NAME: cmf-prod # edit this to match your environment name
